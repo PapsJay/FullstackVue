@@ -11,4 +11,4 @@ window.Seed = (function () {
         }
     ];
     return { submissions: submissions };
-})
+}());
