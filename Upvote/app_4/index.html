@@ -1,57 +1,71 @@
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css" ;>
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.6/css/all.css">
-    <link rel="stylesheet" href="../public/styles.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css"
+      ;
+    />
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.0.6/css/all.css"
+    />
+    <link rel="stylesheet" href="../public/styles.css" />
     <title>UpVote</title>
-</head>
+  </head>
 
-<body>
+  <body>
     <div id="app">
-        <h2 class="title has-text-centered dividing-header">Upvote</h2>
-        <div class="section">
-            <article class="media" v-for="submission in submissions" v-bind:key="submission.id">
-                <figure class="media-left">
-                    <img class="image is-64x64" v-bind:src="submission.submissionImage">
-                </figure>
+      <h2 class="title has-text-centered dividing-header">Upvote</h2>
+      <div class="section">
+        <article
+          class="media"
+          v-for="submission in sortedSubmissions"
+          v-bind:key="submission.id"
+          v-bind:class="{'blue-border': submission.votes >= 20}"
+        >
+          <figure class="media-left">
+            <img
+              class="image is-64x64"
+              v-bind:src="submission.submissionImage"
+            />
+          </figure>
 
-                <div class="media-content">
-                    <div class="content">
-                        <p>
-                            <strong>
-                                <a v-bind:href="submissions[0].url" class="has-text-info">{{submissions.title}}</a>
-                                <span class="tag is-small">#{{submission.id}}</span>
-                            </strong>
-                            <br>
-                            {{submission.description}}
-                            <br>
-                            <small class="is-size-7">
-                                Submitted by:
-                                <img class="image is-24x24" v-bind:src="submission.avatar">
-                            </small>
-                        </p>
-                    </div>
-                </div>
+          <div class="media-content">
+            <div class="content">
+              <p>
+                <strong>
+                  <a v-bind:href="submissions[0].url" class="has-text-info"
+                    >{{submissions.title}}</a
+                  >
+                  <span class="tag is-small">#{{submission.id}}</span>
+                </strong>
+                <br />
+                {{submission.description}}
+                <br />
+                <small class="is-size-7">
+                  Submitted by:
+                  <img class="image is-24x24" v-bind:src="submission.avatar" />
+                </small>
+              </p>
+            </div>
+          </div>
 
-                <div class="media-right">
-                    <span class="icon is-small">
-                        <i class="fa fa-chevron-up"></i>
-                        <strong class="has-text-info">{{submission.votes}}</strong>
-                    </span>
-                </div>
-            </article>
-        </div>
+          <div class="media-right">
+            <span class="icon is-small" v-on:click="upvote(submission.id)">
+              <i class="fa fa-chevron-up"></i>
+              <strong class="has-text-info">{{submission.votes}}</strong>
+            </span>
+          </div>
+        </article>
+      </div>
     </div>
 
     <!-- Vue.js CDN -->
     <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.min.js"></script>
     <script src="./seed.js"></script>
     <script src="./main.js"></script>
-
-</body>
-
+  </body>
 </html>
