@@ -1,19 +1,24 @@
-# Fullstack Vue
+# hello-world
 
-## Single-file components - Calendar App
-
-1. Ensure you have `npm` installed.
-
-2. Install the dependencies
-
-````
+## Project setup
+```
 npm install
-````
+```
 
-3. Boot the app
-
-````
+### Compiles and hot-reloads for development
+```
 npm run serve
-````
+```
 
-The server is now running - watch the console output for instructions, but by default, your server is now running (with hot reload) at [http://localhost:8080/](http://localhost:8080/)
+### Compiles and minifies for production
+```
+npm run build
+```
+
+### Lints and fixes files
+```
+npm run lint
+```
+
+### Customize configuration
+See [Configuration Reference](https://cli.vuejs.org/config/).
